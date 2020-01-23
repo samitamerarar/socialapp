@@ -5,12 +5,14 @@ const FBAuth = require('./util/fbAuth');
 const cors = require('cors');
 app.use(cors());
 
-const { getAllScreams, postOneScream } = require('./handlers/screams');
+const { getAllScreams, postOneScream, getScream } = require('./handlers/screams');
 const { signup, login, uploadImage, addUserDetails, getAuthenticatedUser } = require('./handlers/users');
 
 // screams routes
 app.get('/screams', getAllScreams);
 app.post('/scream', FBAuth, postOneScream);
+app.get('/scream/:screamId', getScream);
+
 
 // users routes
 app.post('/signup', signup);
